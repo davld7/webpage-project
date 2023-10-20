@@ -25,8 +25,8 @@ async def index():
     return FileResponse(path=path, media_type=media_type)
 
 
-@app.get("/favicon.png", response_class=FileResponse, status_code=status.HTTP_200_OK)
+@app.get("/favicon.ico", response_class=FileResponse, status_code=status.HTTP_200_OK)
 async def favicon():
-    path = "favicon.png"
-    media_type = "image/png"
+    path = "favicon.ico"
+    media_type = "image/x-icon"
     return FileResponse(path=path, media_type=media_type)
