@@ -6,4 +6,4 @@ Miembros del Equipo
 - Byron Steven Flores Gaitán
 - Roberto David Morales Ramos
 
-<img src="https://github.com/davld7/my-portfolio/blob/main/images/screenshot.jpg?raw=true" alt="Screenshot" width="50%" />
+<img src="https://github.com/davld7/webpage-project/blob/main/images/screenshot.jpg?raw=true" alt="Screenshot" width="50%" />
