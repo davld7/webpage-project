@@ -1,6 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
+from backend.routers.contact import router as contact_router
 
 app = FastAPI()
 
@@ -9,6 +10,7 @@ app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
 app.mount("/images", StaticFiles(directory="images"), name="images")
 app.mount("/js", StaticFiles(directory="js"), name="js")
 app.mount("/scss", StaticFiles(directory="scss"), name="scss")
+app.include_router(contact_router)
 
 
 @app.get("/", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
