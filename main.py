@@ -25,3 +25,10 @@ async def favicon():
     path = "favicon.ico"
     media_type = "image/x-icon"
     return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/logo.png", response_class=FileResponse, status_code=status.HTTP_200_OK)
+async def logo():
+    path = "logo.png"
+    media_type = "image/png"
+    return FileResponse(path=path, media_type=media_type)
