@@ -9,13 +9,6 @@ from email.mime.text import MIMEText
 router = APIRouter(prefix="/contact", tags=["contact"])
 
 
-@router.get("/style.css", response_class=FileResponse, status_code=status.HTTP_200_OK)
-async def contact_style():
-    path = "css/contact.css"
-    mediatype = "text/css"
-    return FileResponse(path=path, media_type=mediatype)
-
-
 @router.post("/submit-form", response_class=JSONResponse, status_code=status.HTTP_200_OK)
 async def submit_form(form_data: FormData):
 
@@ -26,8 +19,40 @@ async def submit_form(form_data: FormData):
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://netflix.zeabur.app/contact/style.css">
         <title>Correo Electrónico</title>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #141414;
+                color: #ffffff;
+                margin: 0;
+                padding: 0;
+            }}
+
+            .container {{
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }}
+
+            .header {{
+                text-align: center;
+                padding-bottom: 20px;
+            }}
+
+            .header img {{
+                max-width: 50%;
+            }}
+
+            .content {{
+                padding: 20px;
+                background-color: #202020;
+                border-radius: 10px;
+                margin-top: 20px;
+            }}
+        </style>
     </head>
 
     <body>
@@ -46,6 +71,7 @@ async def submit_form(form_data: FormData):
 
     </html>
     """
+
     try:
         message = MIMEMultipart()
         message["From"] = variables.sender_email
