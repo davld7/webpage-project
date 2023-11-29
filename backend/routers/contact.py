@@ -56,7 +56,11 @@ async def submit_form(form_data: FormData):
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(variables.sender_email, variables.sender_password)
-        server.send_message(message)
+        server.sendmail(
+            variables.sender_email,
+            "davld7@outlook.com",
+            message.as_string(),
+        )
         server.quit()
 
         return JSONResponse(content={"message": "Form submitted successfully"})
