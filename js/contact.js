@@ -14,7 +14,7 @@ async function submitForm() {
     };
 
     try {
-        const response = await fetch('http://192.168.1.12:8000/contact/submit-form', {
+        const response = await fetch('https://netflix.zeabur.app/contact/submit-form', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
