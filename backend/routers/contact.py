@@ -42,7 +42,7 @@ async def submit_form(form_data: FormData):
             }}
 
             .header img {{
-                max-width: 50%;
+                max-width: 30%;
             }}
 
             .content {{
