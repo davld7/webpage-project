@@ -19,7 +19,6 @@ async def submit_form(form_data: FormData):
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Correo Electrónico</title>
         <style>
             body {{
                 font-family: Arial, sans-serif;
@@ -61,7 +60,7 @@ async def submit_form(form_data: FormData):
                 <img src="https://netflix.zeabur.app/logo.png" alt="Netflix Logo">
             </div>
             <div class="content">
-                <h2>¡Nuevo Formulario de Contacto!</h2>
+                <h2>Formulario de Contacto</h2>
                 <p>Nombre: {form_data.first_name} {form_data.last_name}</p>
                 <p>Correo: {form_data.email}</p>
                 <p>Mensaje: {form_data.message}</p>
