@@ -22,8 +22,8 @@ async def submit_form(form_data: FormData):
         <style>
             body {{
                 font-family: Arial, sans-serif;
-                background-color: #141414;
-                color: #ffffff;
+                background-color: #ffffff;
+                color: #141414;
                 margin: 0;
                 padding: 0;
             }}
@@ -47,7 +47,7 @@ async def submit_form(form_data: FormData):
 
             .content {{
                 padding: 20px;
-                background-color: #202020;
+                background-color: #eee8e8;
                 border-radius: 10px;
                 margin-top: 20px;
             }}
@@ -74,7 +74,8 @@ async def submit_form(form_data: FormData):
     try:
         message = MIMEMultipart()
         message["From"] = variables.sender_email
-        message["To"] = "davld7@outlook.com"
+        message["To"] = ", ".join(
+            [variables.david_email, variables.brandon_email])
         message["Subject"] = form_data.subject
         message.attach(MIMEText(html, "html"))
 

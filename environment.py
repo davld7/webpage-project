@@ -18,6 +18,8 @@ class Settings(BaseSettings):
 class Variables(Settings):
     sender_email: str
     sender_password: str
+    david_email: str
+    brandon_email: str
 
 
 @lru_cache
