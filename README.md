@@ -1,9 +1,11 @@
 # Diseño de Página Web
 
-Miembros del Equipo
+Integrantes de FullStack Team:
 
 - Brandon Isaac Cruz Reyes
 - Byron Steven Flores Gaitán
 - Roberto David Morales Ramos
 
-<img src="https://github.com/davld7/webpage-project/blob/main/images/screenshot.jpg?raw=true" alt="Screenshot" width="50%" />
+![Desktop Preview](https://raw.githubusercontent.com/davld7/webpage-project/main/preview-desktop.png)
+
+![Mobile Preview](https://raw.githubusercontent.com/davld7/webpage-project/main/preview-mobile.png)
