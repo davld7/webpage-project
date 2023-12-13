@@ -1,6 +1,9 @@
 from fastapi import APIRouter, HTTPException, status
-from fastapi.responses import JSONResponse
-from backend.models.contact import FormData
+from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from backend.database.models.contact import FormData, FormDataWithId
+from backend.database.schemas.contact import contacts_schema
+from backend.database.client import contacts_collection
+from typing import List
 from environment import variables
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -61,7 +64,8 @@ async def submit_form(form_data: FormData):
             </div>
             <div class="content">
                 <h2>Formulario de Contacto</h2>
-                <p>Nombre: {form_data.first_name} {form_data.last_name}</p>
+                <p>Nombre: {form_data.first_name}</p>
+                <p>Apellido: {form_data.last_name}</p>
                 <p>Correo: {form_data.email}</p>
                 <p>Mensaje: {form_data.message}</p>
             </div>
@@ -85,7 +89,21 @@ async def submit_form(form_data: FormData):
         server.send_message(message)
         server.quit()
 
+        contacts_collection.insert_one(form_data.model_dump(exclude={"id"}))
+
         return JSONResponse(content={"message": "Form submitted successfully"})
     except Exception as exception:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exception))
+
+
+@router.get("/db", response_model=List[FormDataWithId])
+async def get_contacts():
+    return contacts_schema(contacts_collection.find())
+
+
+@router.get("/list", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+async def contact_list() -> FileResponse:
+    path = "contact-list.html"
+    media_type = "text/html"
+    return FileResponse(path=path, media_type=media_type)

@@ -20,6 +20,7 @@ class Variables(Settings):
     sender_password: str
     david_email: str
     brandon_email: str
+    uri: str
 
 
 @lru_cache

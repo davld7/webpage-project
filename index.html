@@ -68,6 +68,7 @@
           <li><a href="#section-catalog" class="nav-link">Catálogo</a></li>
           <li><a href="#section-team" class="nav-link">Equipo</a></li>
           <li><a href="#section-contact" class="nav-link">Contacto</a></li>
+          <li><a href="#section-admin" class="nav-link">Administrador</a></li>
         </ul>
         <ul class="social js-clone-nav">
           <li><a href="#" onclick="openInstagram(event)"><span class="icon-instagram"></span></a></li>
@@ -431,6 +432,40 @@
           </div>
         </section>
 
+        <section class="site-section" id="section-admin">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+
+                <h2 class="mb-5 heading text-center">Administrador</h2>
+
+                <form action="#">
+
+                  <div class="row form-group">
+                    <div class="col-md-12 mb-3 mb-md-0">
+                      <label class="" for="username">Usuario</label>
+                      <input type="text" id="username" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                      <label class="" for="password">Contraseña</label>
+                      <input type="password" id="password" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="col-md-12 text-center">
+                      <input type="button" value="Login" onclick="checkCredentials()" class="btn btn-primary btn-md">
+                    </div>
+                  </div>
+                  
+                  <div id="loginStatus" style="text-align: center;"></div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div class="row justify-content-center">
           <div class="col-md-12 text-center py-5">
             <p>Copyright &copy;
@@ -466,6 +501,8 @@
   <script src="js/contact.js"></script>
 
   <script src="js/social.js"></script>
+
+  <script src="js/admin.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 </body>

@@ -1,7 +1,9 @@
-from fastapi import FastAPI, status
-from fastapi.responses import HTMLResponse, FileResponse
+from fastapi import FastAPI, HTTPException, status
+from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from backend.routers.contact import router as contact_router
+from backend.database.client import client
+from pymongo.errors import PyMongoError
 
 app = FastAPI()
 
@@ -32,3 +34,15 @@ async def logo():
     path = "logo.png"
     media_type = "image/png"
     return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/ping", response_class=JSONResponse, status_code=status.HTTP_200_OK)
+async def send_ping():
+    try:
+        client.admin.command('ping')
+        message = "Pinged your deployment. You successfully connected to MongoDB!"
+        return JSONResponse(content={"message": message})
+    except PyMongoError as exception:
+        detail = str(exception)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=detail)
