@@ -1,84 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lista de Contactos</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Contactos</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5eedc;
+      /* soft background color */
+      color: #333;
+      /* dark grey color for text */
+    }
 
-  #contact-list {
-    margin-top: 20px;
-  }
+    #contact-list {
+      margin-top: 20px;
+    }
 
-  .contact-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-  }
+    .contact-item {
+      background-color: #ffffff;
+      /* white background for each contact item */
+      border-left: 5px solid #dd4a48;
+      /* accent border color */
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* subtle shadow for depth */
+    }
 
-  .contact-item h3 {
-    margin: 0;
-    color: #333;
-  }
+    .contact-item p {
+      margin: 5px 0;
+      color: #333;
+      /* dark grey color for text */
+    }
 
-  .contact-item p {
-    margin: 5px 0;
-  }
+    .contact-title {
+      font-weight: bold;
+      color: #dd4a48;
+      /* accent color for titles */
+    }
 
-  .contact-title {
-    font-weight: bold;
-  }
-</style>
+    h1 {
+      color: #000000;
+      /* black color for the main heading */
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Lista de Contactos</h1>
-<div id="contact-list"></div>
+  <h1 style="text-align: center;">Lista de Contactos</h1>
+  <div id="contact-list"></div>
 
-<script>
-async function fetchAndDisplayContacts() {
-  try {
-    const response = await fetch('https://netflix.zeabur.app/contact/db');
-    const contacts = await response.json();
-    const contactListDiv = document.getElementById('contact-list');
+  <script>
+    async function fetchAndDisplayContacts() {
+      try {
+        const response = await fetch('https://netflix.zeabur.app/contact/db');
+        const contacts = await response.json();
+        const contactListDiv = document.getElementById('contact-list');
 
-    contacts.forEach(contact => {
-      const contactDiv = document.createElement('div');
-      contactDiv.className = 'contact-item';
+        contacts.forEach(contact => {
+          const contactDiv = document.createElement('div');
+          contactDiv.className = 'contact-item';
 
-      const firstNamePara = document.createElement('p');
-      const lastNamePara = document.createElement('p');
-      const emailPara = document.createElement('p');
-      const subjectPara = document.createElement('p');
-      const messagePara = document.createElement('p');
+          const firstNamePara = document.createElement('p');
+          const lastNamePara = document.createElement('p');
+          const emailPara = document.createElement('p');
+          const subjectPara = document.createElement('p');
+          const messagePara = document.createElement('p');
 
-      firstNamePara.innerHTML = `<span class="contact-title">Nombre:</span> ${contact.first_name}`;
-      lastNamePara.innerHTML = `<span class="contact-title">Apellido:</span> ${contact.last_name}`;
-      emailPara.innerHTML = `<span class="contact-title">Correo:</span> ${contact.email}`;
-      subjectPara.innerHTML = `<span class="contact-title">Asunto:</span> ${contact.subject}`;
-      messagePara.innerHTML = `<span class="contact-title">Mensaje:</span> ${contact.message}`;
+          firstNamePara.innerHTML = `<span class="contact-title">Nombre:</span> ${contact.first_name}`;
+          lastNamePara.innerHTML = `<span class="contact-title">Apellido:</span> ${contact.last_name}`;
+          emailPara.innerHTML = `<span class="contact-title">Correo:</span> ${contact.email}`;
+          subjectPara.innerHTML = `<span class="contact-title">Asunto:</span> ${contact.subject}`;
+          messagePara.innerHTML = `<span class="contact-title">Mensaje:</span> ${contact.message}`;
 
-      contactDiv.appendChild(firstNamePara);
-      contactDiv.appendChild(lastNamePara);
-      contactDiv.appendChild(emailPara);
-      contactDiv.appendChild(subjectPara);
-      contactDiv.appendChild(messagePara);
+          contactDiv.appendChild(firstNamePara);
+          contactDiv.appendChild(lastNamePara);
+          contactDiv.appendChild(emailPara);
+          contactDiv.appendChild(subjectPara);
+          contactDiv.appendChild(messagePara);
 
-      contactListDiv.appendChild(contactDiv);
-    });
-  } catch (error) {
-    console.error('Error fetching contacts:', error);
-  }
-}
+          contactListDiv.appendChild(contactDiv);
+        });
+      } catch (error) {
+        console.error('Error fetching contacts:', error);
+      }
+    }
 
-fetchAndDisplayContacts();
-</script>
+    fetchAndDisplayContacts();
+  </script>
 
 </body>
+
 </html>
